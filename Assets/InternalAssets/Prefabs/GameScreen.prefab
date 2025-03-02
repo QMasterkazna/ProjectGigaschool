@@ -432,6 +432,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: rideButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7703576092607064648, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703576092607064648, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4713166047577827573, guid: 6b7ee854601034648b50d3d343354f5f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -658,6 +666,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: heavyButtonAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 7703576092607064648, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703576092607064648, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4798190473603950137, guid: 71094e64315ad6d41af400439aa8c206, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -733,7 +749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3854429875747398032, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7013425
       objectReference: {fileID: 0}
     - target: {fileID: 3854429875747398032, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
       propertyPath: m_LocalRotation.x
@@ -745,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3854429875747398032, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.7128244
       objectReference: {fileID: 0}
     - target: {fileID: 3854429875747398032, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -765,12 +781,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3854429875747398032, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90.93
       objectReference: {fileID: 0}
     - target: {fileID: 5127109644928627695, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
       propertyPath: m_Name
       value: jumpButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7703576092607064648, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703576092607064648, guid: 2b2b39381f8a9db4e94c9fe830bbc359, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 76be298b9e59dcf45a22a631a62092d4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
