@@ -16,10 +16,15 @@ public class ClickButtonManager : MonoBehaviour
         _clickLightButton.Initilize(_buttonConfig.DefaultSprite, _buttonConfig.ButtonColors);
         _clickLightButton.SubscribeOnClickLightAttack(ShowClickLightAttack);
         _clickLightButton.SubscribeOnClickLightAttack(() => OnClicked?.Invoke());
+        
         _clickHeavyButton.SubscribeOnClickHeavyAttack(ShowClickHeavyAttack);
+        
         _clickJumpButton.SubscribeOnClickJump(ShowClickJump);
+        
         _clickRideButton.SubscribeOnClickRide(ShowClickRide);
+        
     }
+    
 
     private void ShowClickRide()
     {
