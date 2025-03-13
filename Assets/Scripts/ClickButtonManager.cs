@@ -13,7 +13,7 @@ public class ClickButtonManager : MonoBehaviour
     public event UnityAction OnClicked;
     public void Initialize()
     {
-        _clickLightButton.Initilize(_buttonConfig.DefaultSprite, _buttonConfig.ButtonColors);
+        // _clickLightButton.Initilize(_buttonConfig.DefaultSprite, _buttonConfig.ButtonColors);
         _clickLightButton.SubscribeOnClickLightAttack(ShowClickLightAttack);
         _clickLightButton.SubscribeOnClickLightAttack(() => OnClicked?.Invoke());
         

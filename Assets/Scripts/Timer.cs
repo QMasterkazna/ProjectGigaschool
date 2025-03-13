@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,7 @@ public class Timer : MonoBehaviour
     private float _maxTime;
     private float _currentTime;
     private bool _isPlaying;
+
     public UnityAction OnTimerEnd;
 
     public void Initialize(float maxTime)
@@ -49,6 +51,6 @@ public class Timer : MonoBehaviour
             return;
         }
         _currentTime -= deltaTime;
-        _timerText.text = _currentTime.ToString("00:00");
+        _timerText.text = _currentTime.ToString("00");
     }
 }

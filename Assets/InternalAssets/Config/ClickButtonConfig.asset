@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7393e5c94f044b2399ff8595b6a9c872, type: 3}
   m_Name: ClickButtonConfig
   m_EditorClassIdentifier: 
-  DefaultSprite: {fileID: -2217898423111697461, guid: e8a08d14ff3f76a428545dfa63326703, type: 3}
+  DefaultSprite: {fileID: -3753825769889500098, guid: a85fbe90eba36324393a320dcd145eff, type: 3}
   ButtonColors:
-    m_NormalColor: {r: 0.0057048798, g: 1, b: 0, a: 1}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_PressedColor: {r: 0.1177857, g: 0.8792453, b: 0.14307761, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
