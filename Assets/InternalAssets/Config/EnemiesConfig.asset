@@ -15,4 +15,4 @@ MonoBehaviour:
   EnemyPrefab: {fileID: -3268731460594086769, guid: 61710863072624446b63b8ee607d0e59, type: 3}
   Enemies:
   - health: 10
-    sprite: {fileID: 5830694933855508796, guid: 8f9c4bc5ce9b72a489bf4b3751b78328, type: 3}
+    sprite: {fileID: -7219935604290807311, guid: 8ca86962ee0091149b444f672cf5a222, type: 3}

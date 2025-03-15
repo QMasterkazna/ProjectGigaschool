@@ -51,6 +51,6 @@ public class Timer : MonoBehaviour
             return;
         }
         _currentTime -= deltaTime;
-        _timerText.text = _currentTime.ToString("00");
+        _timerText.text = _currentTime.ToString("00.00");
     }
 }

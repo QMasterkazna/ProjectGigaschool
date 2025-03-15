@@ -1,0 +1,1 @@
+C:\Users\rimma\GigaschoolGameV1\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\1z93t1w3\obj\arm64-v8a

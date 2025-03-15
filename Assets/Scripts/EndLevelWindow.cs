@@ -51,9 +51,9 @@ public class EndLevelWindow : MonoBehaviour
 
     private void GetTime()
     {
-        int time;
-        int.TryParse(_textTimer.text, out time);
-        _timeWinText.text = ($"Time: {(10 - time).ToString()}");
+        float time;
+        float.TryParse(_textTimer.text, out time);
+        _timeWinText.text = ($"Time: {(10f - time).ToString()}");
     
     }
 
