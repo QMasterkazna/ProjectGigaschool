@@ -45,7 +45,7 @@ public class EnemyManager : MonoBehaviour
 
     public void DamageCurrentEnemy(float damage)
     {
-        _currentEnemy.DoDamage(damage);
+        _currentEnemy.DoDamage(damage, .8f);
         // Debug.Log($"Damaged!- {damage}");
     }
     

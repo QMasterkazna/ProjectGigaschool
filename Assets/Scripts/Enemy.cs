@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class Enemy : MonoBehaviour
     public event UnityAction OnDead;
     
     private float _health;
+    
+
 
     public void Initialize(EnemiesData data)
     {
@@ -17,7 +20,7 @@ public class Enemy : MonoBehaviour
         _image.sprite = data.sprite;
     }
 
-    public void DoDamage(float damage)
+    public void DoDamage(float damage, float time)
     {
         if (damage >= _health)
         {
@@ -29,6 +32,7 @@ public class Enemy : MonoBehaviour
         _health -= damage;
         OnDamaged?.Invoke(damage);
     }
+    
 
     public float GetHealth()
     {
