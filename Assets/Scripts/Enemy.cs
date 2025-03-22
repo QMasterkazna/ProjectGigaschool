@@ -1,6 +1,8 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -11,13 +13,24 @@ public class Enemy : MonoBehaviour
     public event UnityAction OnDead;
     
     private float _health;
-    
+    private Sequence _currentSequenceDamage;
 
 
     public void Initialize(EnemiesData data)
     {
         _health = data.health;
         _image.sprite = data.sprite;
+        SetCurrentSequenceMethod();
+    }
+
+    private void SetCurrentSequenceMethod()
+    {
+        _currentSequenceDamage = DOTween.Sequence()
+            .AppendCallback(() => transform.localScale = new Vector3(1, 1, 1))
+            .Append(transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.2f))
+            .Append(transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f))
+            .SetAutoKill(false)
+            .Pause();
     }
 
     public void DoDamage(float damage, float time)
@@ -30,6 +43,8 @@ public class Enemy : MonoBehaviour
             return;
         }
         _health -= damage;
+        _currentSequenceDamage.Restart();
+   
         OnDamaged?.Invoke(damage);
     }
     

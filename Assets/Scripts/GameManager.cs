@@ -1,22 +1,23 @@
+using SceneManagment;
 using UnityEngine;
 using UnityEngine.Events;
-using ComboSystemSpace;
-public class GameManager : MonoBehaviour
+
+public class GameManager : EntryPoint
 {
     [SerializeField] private ClickButtonManager _clickButtonManager;
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private HealthBar _healthBar;
     [SerializeField] private Timer _timer;
     [SerializeField] private EndLevelWindow _endLevelWindow;
-    private void Awake()
+    private const string SCENE_LOADER_TAG = "SceneLoader";
+
+
+    public override void Run(SceneEnterParams enterParams)
     {
         _clickButtonManager.Initialize();
         _enemyManager.Initialize(_healthBar);
         _endLevelWindow.Initialize();
         ComboSystem GetDamageCombo = new ComboSystem();
-        /*
-         * Прописать всем подвязку к GetDamageCombo
-         */
         
         _clickButtonManager.OnClickedLightAttack += () =>
         {
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
         {
             int damage = GetDamageCombo.CheckCombo(AttackTypes.Heavy);
             _enemyManager.DamageCurrentEnemy(damage);
+            Debug.Log($"COMBO: {damage}");
+
             // _enemyManager.DamageCurrentEnemy(5f);
         };
         _clickButtonManager.OnClickedRideAttack += () =>
@@ -41,14 +44,22 @@ public class GameManager : MonoBehaviour
         {
             int damage = GetDamageCombo.CheckCombo(AttackTypes.Jump);
             _enemyManager.DamageCurrentEnemy(damage);
+            Debug.Log($"COMBO: {damage}");
+
             // _enemyManager.DamageCurrentEnemy(.2f);
         };
-        _endLevelWindow.OnRestartClicked += StartLevel;
+        _endLevelWindow.OnRestartClicked += RestartLevel;
         _enemyManager.OnLevelPassed += LevelPassed;
         
         StartLevel();
     }
-    
+
+    private void RestartLevel()
+    {
+        var sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
+        sceneLoader.LoadGameplayScene();
+    }
+
 
     private void LevelPassed()
     {
