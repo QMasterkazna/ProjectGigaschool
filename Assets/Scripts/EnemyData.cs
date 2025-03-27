@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
-    [Serializable]
+[Serializable]
     public class EnemiesData
     {
-        public float health;
-        public Sprite sprite;
+        public string Id;
+        public Sprite Sprite;
     }
 

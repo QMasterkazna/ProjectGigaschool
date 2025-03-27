@@ -1,9 +1,11 @@
 
 using System;
+using InternalAssets.Config.EnemyConfigs;
+using InternalAssets.Config.LevelConfigs;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
+using InternalAssets.Config.LevelConfigs;
 using UnityEngine.UI;
 
 public class EndLevelWindow : MonoBehaviour
@@ -18,6 +20,7 @@ public class EndLevelWindow : MonoBehaviour
 
     [SerializeField] private Button _loseRestartButton;
     [SerializeField] private Button _winRestartButton;
+    private LevelData _levelData;
     
     private int _winCount;
     private int _loseCount;
@@ -53,7 +56,9 @@ public class EndLevelWindow : MonoBehaviour
     {
         float time;
         float.TryParse(_textTimer.text, out time);
-        _timeWinText.text = ($"Time: {(10f - time).ToString()}");
+        // float timeBoss = _levelData.Enemies[_levelData.Enemies.Count].BossTime;
+        // Debug.LogError(timeBoss);
+        // _timeWinText.text = ($"Time: {( tim - time).ToString("00:0")}");
     
     }
 

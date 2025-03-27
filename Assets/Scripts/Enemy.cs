@@ -16,10 +16,10 @@ public class Enemy : MonoBehaviour
     private Sequence _currentSequenceDamage;
 
 
-    public void Initialize(EnemiesData data)
+    public void Initialize(Sprite sprite, float health)
     {
-        _health = data.health;
-        _image.sprite = data.sprite;
+        _health = health;
+        _image.sprite = sprite;
         SetCurrentSequenceMethod();
     }
 
@@ -42,6 +42,8 @@ public class Enemy : MonoBehaviour
             OnDead?.Invoke();
             return;
         }
+        
+        Debug.Log(damage);
         _health -= damage;
         _currentSequenceDamage.Restart();
    

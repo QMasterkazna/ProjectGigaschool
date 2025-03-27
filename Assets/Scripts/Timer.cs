@@ -12,13 +12,17 @@ public class Timer : MonoBehaviour
 
     public UnityAction OnTimerEnd;
 
-    public void Initialize(float maxTime)
+    public void SetValue(float maxTime)
     {
         _maxTime = maxTime;
         _currentTime = maxTime;
         Play();
     }
-    
+
+    public void SetActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+    }
     public void Play()
     {
         _isPlaying = true;

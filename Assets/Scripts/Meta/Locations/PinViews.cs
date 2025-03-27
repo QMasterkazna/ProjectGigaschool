@@ -21,20 +21,21 @@ namespace Meta.Locations
 
         private Sequence _currentLevelSequence;
         
-        public void Initialize(int levelNumber, PinType pinType, UnityAction clickCallback)
+        // ReSharper disable Unity.PerformanceAnalysis
+        public void Initialize(int levelNumber, ProgressState progressState, UnityAction clickCallback)
         {
             SetupCurrentLevelSequence();
             _text.text = $"Ур {levelNumber}";
 
-            _image.color = pinType switch
+            _image.color = progressState switch
             {
-                PinType.Current => _currentLevel,
-                PinType.Closed => _closedlevel,
-                PinType.Passed => _passedLevel,
+                ProgressState.Current => _currentLevel,
+                ProgressState.Closed => _closedlevel,
+                ProgressState.Passed => _passedLevel,
                 
             };
             
-            if (pinType == PinType.Current)
+            if (progressState == ProgressState.Current)
             {
                 transform.DORotate(new Vector3(0, 0, 10f), 0.2f).OnComplete(() => _currentLevelSequence.Play());
                 
@@ -55,8 +56,9 @@ namespace Meta.Locations
 
         private void OnDestroy()
         {
-            _currentLevelSequence.Kill();
-            _currentLevelSequence = null;
+            _currentLevelSequence.Complete(); // Завершить выполнение последовательности
+            _currentLevelSequence.Kill();     // Убить последовательность
+            _currentLevelSequence = null;     // Обнулить ссылку
         }
         
         

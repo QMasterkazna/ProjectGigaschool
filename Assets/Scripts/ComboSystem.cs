@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class ComboSystem
 {
@@ -21,41 +22,39 @@ public class ComboSystem
         _secondAttack = attackType;
 
         _damageCombo = GetDamageCombo(_firstAttack, _secondAttack);
-        return _damageCombo;
-        
-    
         _lastHitTime = DateTime.Now;
         _firstAttack = _secondAttack;
-        return 1;
+        return _damageCombo;
     }
     
     public int GetDamageCombo(AttackTypes first, AttackTypes second)
     {   
         if (first == AttackTypes.Light)
         {
-            CheckComboTime(2);
+            return CheckComboTime(2);
         }
 
         if (first == AttackTypes.Heavy)
         {
-            CheckComboTime(10);
+            return CheckComboTime(10);
         }
         if (first == AttackTypes.Ride && second == AttackTypes.Light)
         {
-            CheckComboTime(15);
+            return CheckComboTime(15);
         }
 
         if (first == AttackTypes.Jump && second == AttackTypes.Heavy)
         {
-            CheckComboTime(20);
+            return CheckComboTime(20);
         }
             
     
-        return 3;
+        return 0 ;
     }
 
     private int CheckComboTime(int damage)
     {
+        Debug.Log("Combo check time");
         return (DateTime.Now - _lastHitTime).Seconds <= Time ? damage : 0;
     }
 }

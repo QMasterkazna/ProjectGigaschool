@@ -1,3 +1,7 @@
+using Global.SaveSystem;
+using Global.SaveSystem.SavableObjects;
+using InternalAssets.Config.LevelConfigs;
+using Meta.Locations;
 using SceneManagment;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,16 +13,30 @@ public class GameManager : EntryPoint
     [SerializeField] private HealthBar _healthBar;
     [SerializeField] private Timer _timer;
     [SerializeField] private EndLevelWindow _endLevelWindow;
+    [SerializeField] private LevelsConfig _levelsConfig;
+    private GameEnterParams _gameEnterParams;
+    private SaveSystem _saveSystem;
     private const string SCENE_LOADER_TAG = "SceneLoader";
 
 
     public override void Run(SceneEnterParams enterParams)
     {
+        _saveSystem = FindFirstObjectByType<SaveSystem>();
+
+        if (enterParams is not GameEnterParams gameEnterParams)
+        {
+            Debug.LogError("troubles with enter params into game");
+            return;
+        }
+
+        _gameEnterParams = gameEnterParams;
+        
+        
         _clickButtonManager.Initialize();
-        _enemyManager.Initialize(_healthBar);
+        _enemyManager.Initialize(_healthBar, _timer);
         _endLevelWindow.Initialize();
         ComboSystem GetDamageCombo = new ComboSystem();
-        
+
         _clickButtonManager.OnClickedLightAttack += () =>
         {
             int damage = GetDamageCombo.CheckCombo(AttackTypes.Light);
@@ -50,28 +68,59 @@ public class GameManager : EntryPoint
         };
         _endLevelWindow.OnRestartClicked += RestartLevel;
         _enemyManager.OnLevelPassed += LevelPassed;
-        
+
         StartLevel();
     }
+
+
 
     private void RestartLevel()
     {
         var sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
-        sceneLoader.LoadGameplayScene();
+        sceneLoader.LoadGameplayScene(_gameEnterParams);
     }
 
 
-    private void LevelPassed()
+    private void LevelPassed(bool isPassed)
     {
-        _endLevelWindow.ShowWinLevelWindow();
+        if (isPassed)
+        {
+            TrySaveProgress();
+            _endLevelWindow.ShowWinLevelWindow();
+        }
+        else
+        {
+            _endLevelWindow.ShowLoseLevelWindow();
+        }
+
         _timer.Stop();
+    }
+
+    private void TrySaveProgress()
+    {
+        var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
+        var maxLevel = _levelsConfig.GetMaxLevelOnLocation(progress.CurrentLocation);
+        if (_gameEnterParams.Location == progress.CurrentLocation &&
+            _gameEnterParams.Level == progress.CurrentLevel)
+        {
+            if (progress.CurrentLevel + 1 >= maxLevel)
+            {
+                progress.CurrentLevel = 1;
+                progress.CurrentLocation++;
+            }
+        }
+        else
+        {
+            progress.CurrentLevel++;
+        }
+        _saveSystem.SaveData(SavableObjectType.Progress);
     }
 
     private void StartLevel()
     {
+        Debug.Log($"Location: {_gameEnterParams.Location}\n level: {_gameEnterParams.Level}");
+        var levelData = _levelsConfig.GetLevel(_gameEnterParams.Location, _gameEnterParams.Level);
         
-        _timer.OnTimerEnd += _endLevelWindow.ShowLoseLevelWindow;
-        _timer.Initialize(10f);
-        _enemyManager.SpawnEnemy();
+        _enemyManager.StartLevel(levelData);
     }
 }

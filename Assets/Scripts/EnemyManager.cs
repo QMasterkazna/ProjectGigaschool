@@ -1,4 +1,5 @@
 
+using InternalAssets.Config.LevelConfigs;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,40 +7,67 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private Transform _enemyContainer;
     [SerializeField] private EnemiesConfig _enemiesConfig;
-    private EnemiesData _currentEnemyData;
     private Enemy _currentEnemy;
     private HealthBar _healthBar;
+    private Timer _timer;
+    private LevelData _levelData;
+    private int _currentEnemyIndex;
 
-    public event UnityAction OnLevelPassed; 
+    public event UnityAction<bool> OnLevelPassed; 
     
-    public void Initialize(HealthBar healthBar)
+    public void Initialize(HealthBar healthBar, Timer timer)
     {
         _healthBar = healthBar;
-        SpawnEnemy();
+        _timer = timer;
     }
 
-    public void SpawnEnemy()
+    public void StartLevel(LevelData levelData)
     {
-        
-        _currentEnemyData = _enemiesConfig.Enemies[0];
-        InitHPbar();
+        _levelData = levelData;
+        _currentEnemyIndex = -1;
         if (_currentEnemy == null)
         {
             _currentEnemy = Instantiate(_enemiesConfig.EnemyPrefab, _enemyContainer);
-            _currentEnemy.OnDead += () => { OnLevelPassed?.Invoke(); };
+            _currentEnemy.OnDead += SpawnEnemy;
             _currentEnemy.OnDamaged += _healthBar.DecreaseValue;
-            _currentEnemy.OnDead += _healthBar.Hide;
         }
+        
+        SpawnEnemy();
+    }
 
-        _currentEnemy.Initialize(_currentEnemyData);
+    private void SpawnEnemy()
+    {
+        _currentEnemyIndex++;
+        _timer.Stop();
+        if (_currentEnemyIndex >= _levelData.Enemies.Count)
+        {
+            OnLevelPassed?.Invoke(true);
+            _timer.Stop();
+            return;
+        }
+        var currentEnemy = _levelData.Enemies[_currentEnemyIndex];
+        _timer.SetActive(currentEnemy.IsBoss);
+        if (currentEnemy.IsBoss)
+        {
+            _timer.SetValue(currentEnemy.BossTime);
+            _timer.OnTimerEnd += () => OnLevelPassed?.Invoke(false);
+        }
+        
+
+        var _currentEnemyData = _enemiesConfig.GetEnemy(currentEnemy.Id);
+        _currentEnemyData = _enemiesConfig.GetEnemy(currentEnemy.Id);
+        InitHPbar(currentEnemy.Hp);
+        
+
+        _currentEnemy.Initialize(_currentEnemyData.Sprite, currentEnemy.Hp);
         
         
     }
 
-    public void InitHPbar()
+    public void InitHPbar(float health)
     {
         _healthBar.Show();
-        _healthBar.SetMaxValue(_currentEnemyData.health);
+        _healthBar.SetMaxValue(health);
 
     }
 
