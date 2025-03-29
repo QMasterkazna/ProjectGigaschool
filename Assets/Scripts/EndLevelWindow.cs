@@ -2,11 +2,13 @@
 using System;
 using InternalAssets.Config.EnemyConfigs;
 using InternalAssets.Config.LevelConfigs;
+using InternalAssets.Config.LevelConfigs;
+using SceneManagment;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using InternalAssets.Config.LevelConfigs;
 using UnityEngine.UI;
+
 
 public class EndLevelWindow : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class EndLevelWindow : MonoBehaviour
 
     [SerializeField] private Button _loseRestartButton;
     [SerializeField] private Button _winRestartButton;
+    private const string SCENE_LOADER_TAG = "SceneLoader";
+
     private LevelData _levelData;
     
     private int _winCount;
@@ -29,7 +33,7 @@ public class EndLevelWindow : MonoBehaviour
     
     public void Initialize()
     {
-        _loseRestartButton.onClick.AddListener(Restart);
+        _loseRestartButton.onClick.AddListener(TravelToMap);
         _winRestartButton.onClick.AddListener(Restart);
     }
     
@@ -61,10 +65,17 @@ public class EndLevelWindow : MonoBehaviour
         // _timeWinText.text = ($"Time: {( tim - time).ToString("00:0")}");
     
     }
-
+    
     private void Restart()
     {
         OnRestartClicked?.Invoke();
         gameObject.SetActive(false);
+    }
+
+    private void TravelToMap()
+    {
+        OnRestartClicked?.Invoke();
+        var sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
+        sceneLoader.LoadMetaScene();
     }
 }

@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -793278221, guid: 9b5d05b423048ad46bdce04414f29965, type: 3}
+    - target: {fileID: 6047178765022021411, guid: 351557c3afe55f04e9a5db5d787f4e22, type: 3}
+      propertyPath: m_text
+      value: YOU ARE BEST
+      objectReference: {fileID: 0}
     - target: {fileID: 6063795874938788403, guid: 351557c3afe55f04e9a5db5d787f4e22, type: 3}
       propertyPath: m_text
       value: 
