@@ -1,5 +1,7 @@
 
 using System;
+using Global.SaveSystem;
+using Global.SaveSystem.SavableObjects;
 using InternalAssets.Config.EnemyConfigs;
 using InternalAssets.Config.LevelConfigs;
 using InternalAssets.Config.LevelConfigs;
@@ -22,19 +24,22 @@ public class EndLevelWindow : MonoBehaviour
 
     [SerializeField] private Button _loseRestartButton;
     [SerializeField] private Button _winRestartButton;
+    [SerializeField] private Button _mapButton;
     private const string SCENE_LOADER_TAG = "SceneLoader";
 
     private LevelData _levelData;
     
     private int _winCount;
     private int _loseCount;
-    
+    private SaveSystem _saveSystem;
+
     public event UnityAction OnRestartClicked;
     
     public void Initialize()
     {
         _loseRestartButton.onClick.AddListener(TravelToMap);
-        _winRestartButton.onClick.AddListener(Restart);
+        _winRestartButton.onClick.AddListener(TravelLevel);
+        _mapButton.onClick.AddListener(TravelToMap);
     }
     
     public void ShowLoseLevelWindow()
@@ -70,6 +75,17 @@ public class EndLevelWindow : MonoBehaviour
     {
         OnRestartClicked?.Invoke();
         gameObject.SetActive(false);
+    }
+
+
+    private void TravelLevel()
+    {
+        OnRestartClicked?.Invoke();
+        var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
+        var sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
+        Debug.Log(progress.CurrentLocation);
+        Debug.Log(progress.CurrentLevel);
+        sceneLoader.LoadGameplayScene(new GameEnterParams(progress.CurrentLocation, progress.CurrentLevel));
     }
 
     private void TravelToMap()

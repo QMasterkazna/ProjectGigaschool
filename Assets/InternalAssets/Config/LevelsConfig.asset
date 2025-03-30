@@ -37,3 +37,131 @@ MonoBehaviour:
       IsBoss: 1
       BossTime: 30
     Reward: 0
+  - Location: 1
+    LevelNumber: 3
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
+  - Location: 1
+    LevelNumber: 4
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
+  - Location: 1
+    LevelNumber: 5
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
+  - Location: 2
+    LevelNumber: 1
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
+  - Location: 2
+    LevelNumber: 2
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
+  - Location: 2
+    LevelNumber: 3
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
+  - Location: 2
+    LevelNumber: 4
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
+  - Location: 2
+    LevelNumber: 5
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+    Reward: 0
