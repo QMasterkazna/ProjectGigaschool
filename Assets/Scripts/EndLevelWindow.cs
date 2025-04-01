@@ -31,15 +31,32 @@ public class EndLevelWindow : MonoBehaviour
     
     private int _winCount;
     private int _loseCount;
-    private SaveSystem _saveSystem;
 
     public event UnityAction OnRestartClicked;
-    
+    public event UnityAction ToMap;
+    public event UnityAction ToNextLvl;
+
+    // ReSharper disable Unity.PerformanceAnalysis
     public void Initialize()
     {
-        _loseRestartButton.onClick.AddListener(TravelToMap);
-        _winRestartButton.onClick.AddListener(TravelLevel);
-        _mapButton.onClick.AddListener(TravelToMap);
+        
+        _loseRestartButton.onClick.AddListener(() =>
+        {
+            // OnRestartClicked?.Invoke();
+            ToMap?.Invoke();
+        });
+        
+        _winRestartButton.onClick.AddListener(() =>
+        {
+            // OnRestartClicked?.Invoke();
+            ToNextLvl?.Invoke();
+        });
+        _mapButton.onClick.AddListener(() =>
+        {
+            // OnRestartClicked?.Invoke();
+            ToMap?.Invoke();
+        });
+        
     }
     
     public void ShowLoseLevelWindow()
@@ -76,22 +93,7 @@ public class EndLevelWindow : MonoBehaviour
         OnRestartClicked?.Invoke();
         gameObject.SetActive(false);
     }
+   
 
-
-    private void TravelLevel()
-    {
-        OnRestartClicked?.Invoke();
-        var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
-        var sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
-        Debug.Log(progress.CurrentLocation);
-        Debug.Log(progress.CurrentLevel);
-        sceneLoader.LoadGameplayScene(new GameEnterParams(progress.CurrentLocation, progress.CurrentLevel));
-    }
-
-    private void TravelToMap()
-    {
-        OnRestartClicked?.Invoke();
-        var sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
-        sceneLoader.LoadMetaScene();
-    }
+   
 }
