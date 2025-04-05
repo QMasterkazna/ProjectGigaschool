@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Global.Audio;
 using Global.SaveSystem;
 using Global.SaveSystem.SavableObjects;
 using InternalAssets.Config.LevelConfigs;
 using Meta.Locations;
 using SceneManagment;
+using Skill;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,17 +21,21 @@ public class GameEntryPoint : EntryPoint
     private GameEnterParams _gameEnterParams;
     private SaveSystem _saveSystem;
     private AudioManager _audioManager;
-    private const string SCENE_LOADER_TAG = "SceneLoader";
+    private const string SCENE_LOADER_TAG = "commonObject";
     private SceneLoader _sceneLoader;
     private Progress _progress;
+    [SerializeField] SkillsConfig _skillsConfig;
+    private SkillSystem _skillSystem;
+    private EndLevelSystem _endLevelSystem;
 
+
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void Run(SceneEnterParams enterParams)
     {
-        _sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
-        _saveSystem = FindFirstObjectByType<SaveSystem>();
-        _progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
-        _audioManager = FindFirstObjectByType<AudioManager>();
-
+        var commonObject = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<commonObject>();
+        _saveSystem = commonObject.SaveSystem;
+        _audioManager = commonObject.AudioManager;
+        _sceneLoader = commonObject.SceneLoader;
         if (enterParams is not GameEnterParams gameEnterParams)
         {
             Debug.LogError("troubles with enter params into game");
@@ -42,12 +48,15 @@ public class GameEntryPoint : EntryPoint
         _clickButtonManager.Initialize();
         _enemyManager.Initialize(_healthBar, _timer);
         _endLevelWindow.Initialize();
+        var openedSkills = (OpenedSkills)_saveSystem.GetData(SavableObjectType.OpenedSkills);
+        _skillSystem = new SkillSystem(openedSkills, _skillsConfig, _enemyManager);
         ComboSystem GetDamageCombo = new ComboSystem();
 
         _clickButtonManager.OnClickedLightAttack += () =>
         {
             int damage = GetDamageCombo.CheckCombo(AttackTypes.Light);
             _enemyManager.DamageCurrentEnemy(damage);
+            _skillSystem.InvokeTrigger(SkillTrigger.OnDamage);
             // Debug.Log($"COMBO: {damage}");
         };
         _clickButtonManager.OnClickedHeavyAttack += () =>
@@ -74,9 +83,10 @@ public class GameEntryPoint : EntryPoint
             // _enemyManager.DamageCurrentEnemy(.2f);
         };
         // _endLevelWindow.OnRestartClicked += RestartLevel;
+        _endLevelSystem = new(_endLevelWindow, _saveSystem, _gameEnterParams, _levelsConfig, _timer);
         _endLevelWindow.ToMap += TravelToMap;
-        // _endLevelWindow.ToNextLvl += TravelLevel(_progress);
-        _enemyManager.OnLevelPassed += LevelPassed;
+        _endLevelWindow.ToNextLvl += TravelLevel;
+        _enemyManager.OnLevelPassed += _endLevelSystem.LevelPassed ;
         
         _audioManager.PlayClip(AudioNames.BackgroundGameMusic);
         StartLevel();
@@ -90,49 +100,14 @@ public class GameEntryPoint : EntryPoint
     }
 
 
-    private void LevelPassed(bool isPassed)
+
+
+    private void TravelLevel()
     {
-        if (isPassed)
-        {
-            TrySaveProgress();
-            _endLevelWindow.ShowWinLevelWindow();
-        }
-        else
-        {
-            _endLevelWindow.ShowLoseLevelWindow();
-        }
-
-        _timer.Stop();
-    }
-
-    private void TrySaveProgress()
-    {
-        var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
-        var maxLevel = _levelsConfig.GetMaxLevelOnLocation(progress.CurrentLocation);
-        if (_gameEnterParams.Location == progress.CurrentLocation &&
-            _gameEnterParams.Level == progress.CurrentLevel)
-        {
-            if (progress.CurrentLevel + 1 >= maxLevel)
-            {
-                progress.CurrentLevel = 1;
-                progress.CurrentLocation++;
-            }
-        }
-        else
-        {
-            progress.CurrentLevel++;
-        }
-
-        _saveSystem.SaveData(SavableObjectType.Progress);
-        Debug.LogError("Прогресс сохранен!");
-    }
-
-    private void TravelLevel(Progress progress)
-    {
-
-        Debug.Log(progress.CurrentLocation);
-        Debug.Log(progress.CurrentLevel);
-        _sceneLoader.LoadGameplayScene(new GameEnterParams(progress.CurrentLocation, progress.CurrentLevel));
+        _progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
+        Debug.Log(_progress.CurrentLocation);
+        Debug.Log(_progress.CurrentLevel);
+        _sceneLoader.LoadGameplayScene(new GameEnterParams(_progress.CurrentLocation, _progress.CurrentLevel));
     }
 
     private void TravelToMap()
@@ -143,9 +118,18 @@ public class GameEntryPoint : EntryPoint
 
     private void StartLevel()
     {
-        Debug.Log($"Location: {_gameEnterParams.Location}\n level: {_gameEnterParams.Level}");
-        var levelData = _levelsConfig.GetLevel(_gameEnterParams.Location, _gameEnterParams.Level);
-
+        var maxLocationAndLevel = _levelsConfig.GetMaxLocationAndLevel();
+        var location = _gameEnterParams.Location;
+        var level = _gameEnterParams.Level;
+        if (location> maxLocationAndLevel.x ||
+            (location == maxLocationAndLevel.x && level > maxLocationAndLevel.y))
+        {
+            location = maxLocationAndLevel.x;
+            level = maxLocationAndLevel.y;
+        }
+        
+        var levelData = _levelsConfig.GetLevel(location, level);
+        
         _enemyManager.StartLevel(levelData);
     }
 }

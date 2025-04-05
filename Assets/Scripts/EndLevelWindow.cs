@@ -93,7 +93,7 @@ public class EndLevelWindow : MonoBehaviour
         OnRestartClicked?.Invoke();
         gameObject.SetActive(false);
     }
-   
 
-   
+
+
 }

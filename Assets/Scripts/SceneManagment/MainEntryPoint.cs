@@ -6,28 +6,23 @@ namespace SceneManagment
 {
     public class MainEntryPoint : MonoBehaviour
     {
-        private const string SCENE_LOADER_TAG = "SceneLoader";
+        private const string SCENE_LOADER_TAG = "commonObject";
 
         public void Awake()
         {
             if (GameObject.FindGameObjectWithTag(SCENE_LOADER_TAG)) return;
             
-            var sceneLoaderPrefab = Resources.Load<SceneLoader>(SCENE_LOADER_TAG);
-            var sceneLoader = Instantiate(sceneLoaderPrefab);
-            DontDestroyOnLoad(sceneLoader);
-
-            var audioManagerPrefab = Resources.Load<AudioManager>("AudioManager");
-            var audioManager = Instantiate(audioManagerPrefab);
-            audioManager.LoadOnce();
-            DontDestroyOnLoad(audioManager);
+            var commonObjectPrefab = Resources.Load<commonObject>(SCENE_LOADER_TAG);
+            var commonObject = Instantiate(commonObjectPrefab);
+            DontDestroyOnLoad(commonObject);
             
-            sceneLoader.Initialize(audioManager);
+            commonObject.AudioManager.LoadOnce();            
+                
+            commonObject.SceneLoader.Initialize(commonObject.AudioManager);
             
-            var saveSystem = new GameObject().AddComponent<SaveSystem>();
-            saveSystem.Initialize();
-            DontDestroyOnLoad(saveSystem);
+            commonObject.SaveSystem = new();
             
-            sceneLoader.LoadMetaScene();
+            commonObject.SceneLoader.LoadMetaScene();
         }
     }
 }

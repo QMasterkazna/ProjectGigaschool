@@ -12,12 +12,15 @@ namespace Meta
         [SerializeField] private LocationManager _locationManager;
         private SaveSystem _saveSystem;
         private AudioManager _audioManager;
-        private const string SCENE_LOADER_TAG = "SceneLoader";
+        private SceneLoader _sceneLoader;
+        private const string SCENE_LOADER_TAG = "commonObject";
 
         public override void Run(SceneEnterParams enterParams)
         {
-            _saveSystem = FindFirstObjectByType<SaveSystem>();
-            _audioManager = FindFirstObjectByType<AudioManager>();
+            var commonObject = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<commonObject>();
+            _saveSystem = commonObject.SaveSystem;
+            _audioManager = commonObject.AudioManager;
+            _sceneLoader = commonObject.SceneLoader;
             var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
             
             _locationManager.Initialize(progress, StartLevel);
