@@ -9,5 +9,6 @@ namespace Skill
         public float Value;
         public SkillTrigger Trigger;
         public float TriggerValue;
+        public int Cost;
     }
 }

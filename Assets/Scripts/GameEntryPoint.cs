@@ -27,7 +27,7 @@ public class GameEntryPoint : EntryPoint
     [SerializeField] SkillsConfig _skillsConfig;
     private SkillSystem _skillSystem;
     private EndLevelSystem _endLevelSystem;
-
+    private LocationandShop _locationandShop;
 
     // ReSharper disable Unity.PerformanceAnalysis
     public override void Run(SceneEnterParams enterParams)
@@ -48,6 +48,7 @@ public class GameEntryPoint : EntryPoint
         _clickButtonManager.Initialize();
         _enemyManager.Initialize(_healthBar, _timer);
         _endLevelWindow.Initialize();
+        _locationandShop.Initialize();
         var openedSkills = (OpenedSkills)_saveSystem.GetData(SavableObjectType.OpenedSkills);
         _skillSystem = new SkillSystem(openedSkills, _skillsConfig, _enemyManager);
         ComboSystem GetDamageCombo = new ComboSystem();

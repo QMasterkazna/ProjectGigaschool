@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d7ec4260ab3da4a81e473117b4f2b6, type: 3}
   m_Name: LevelsConfig
   m_EditorClassIdentifier: 
-  Levels:
+  _levels:
   - Location: 1
     LevelNumber: 1
     Enemies:
@@ -24,7 +24,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 30
-    Reward: 0
+    Reward: 30
   - Location: 1
     LevelNumber: 2
     Enemies:
@@ -36,7 +36,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 30
-    Reward: 0
+    Reward: 25
   - Location: 1
     LevelNumber: 3
     Enemies:
@@ -52,7 +52,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 40
   - Location: 1
     LevelNumber: 4
     Enemies:
@@ -68,7 +68,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 30
   - Location: 1
     LevelNumber: 5
     Enemies:
@@ -84,7 +84,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 50
   - Location: 2
     LevelNumber: 1
     Enemies:
@@ -100,7 +100,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 35
   - Location: 2
     LevelNumber: 2
     Enemies:
@@ -116,7 +116,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 25
   - Location: 2
     LevelNumber: 3
     Enemies:
@@ -132,7 +132,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 45
   - Location: 2
     LevelNumber: 4
     Enemies:
@@ -148,7 +148,7 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 45
   - Location: 2
     LevelNumber: 5
     Enemies:
@@ -164,4 +164,4 @@ MonoBehaviour:
       Hp: 200
       IsBoss: 1
       BossTime: 15
-    Reward: 0
+    Reward: 60

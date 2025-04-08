@@ -40,6 +40,8 @@ public class EndLevelSystem
     private void TrySaveProgress()
     {
         var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
+        var wallet = (Wallet)_saveSystem.GetData(SavableObjectType.Wallet);
+        var reward = _levelsConfig.GetReward();
         if (_gameEnterParams.Location != progress.CurrentLocation ||
             _gameEnterParams.Level != progress.CurrentLevel) return;
         var maxLocationAndLevel = _levelsConfig.GetMaxLocationAndLevel();
@@ -57,8 +59,8 @@ public class EndLevelSystem
         {
             progress.CurrentLevel++;
         }
-
-
+        wallet.Coins += reward;
+        _saveSystem.SaveData(SavableObjectType.Wallet);
         _saveSystem.SaveData(SavableObjectType.Progress);
     }
 }

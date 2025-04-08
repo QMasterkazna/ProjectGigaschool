@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Extensions;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,8 +10,11 @@ namespace InternalAssets.Config.LevelConfigs {
         [FormerlySerializedAs("Levels")][SerializeField] private List<LevelData> _levels;
         
         private Dictionary<int, Dictionary<int, LevelData>> _levelsMap;
-        
 
+        public int GetReward()
+        {
+            return _levels.Sum(levelData => levelData.Reward);
+        }
         public LevelData GetLevel(int location, int level)
         {
             if(_levelsMap.IsNullOrEmpty()) FillLevelMap();

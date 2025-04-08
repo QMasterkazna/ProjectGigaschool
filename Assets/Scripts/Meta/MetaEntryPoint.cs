@@ -3,6 +3,8 @@ using Global.SaveSystem;
 using Global.SaveSystem.SavableObjects;
 using Meta.Locations;
 using SceneManagment;
+using Shop;
+using Skill;
 using UnityEngine;
 
 namespace Meta
@@ -10,6 +12,8 @@ namespace Meta
     public class MetaEntryPoint : EntryPoint
     {
         [SerializeField] private LocationManager _locationManager;
+        [SerializeField] private ShopWindow _shopWindow;
+        [SerializeField] private SkillsConfig _skillsConfig;
         private SaveSystem _saveSystem;
         private AudioManager _audioManager;
         private SceneLoader _sceneLoader;
@@ -24,14 +28,14 @@ namespace Meta
             var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
             
             _locationManager.Initialize(progress, StartLevel);
+            _shopWindow.Initialize(_saveSystem, _skillsConfig);
             _audioManager.PlayClip(AudioNames.BackgroundMetaMusic);
         }
 
         private void StartLevel(int location, int level)
         {
             
-            var sceneLoader = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<SceneLoader>();
-            sceneLoader.LoadGameplayScene(new GameEnterParams(location, level));
+            _sceneLoader.LoadGameplayScene(new GameEnterParams(location, level));
         }
     }
 }
