@@ -14,11 +14,11 @@ public class ClickButton : MonoBehaviour
         _image.sprite = sprite;
         _button.colors = colorBlock;
     }
-    
-    /* TODO:
-     * Сделать подписки на 4 кнопки. Легкая, Тяжелая атака, прыжок и подкат
-     * Также переименовать подписку для легкой атаки
-     */
+
+    public void SubscribeOnClick(UnityAction action)
+    {
+        _button.onClick.AddListener(action);
+    }
     public void SubscribeOnClickLightAttack(UnityAction action)
     {
         _button.onClick.AddListener(action);

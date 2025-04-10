@@ -7,5 +7,8 @@
         OnTime = 3,
         OnTimerLeft = 4,
         OnStart = 5,
+        OnEnemy = 6,
+        OnSpecial = 7,
+        OnEliteEnemy = 8,
     }
 }

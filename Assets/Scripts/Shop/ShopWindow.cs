@@ -38,7 +38,7 @@ namespace Shop
         {
             foreach (var skillsConfigSkill in _skillsConfig.Skills)
             {
-                var skillWithLevel = _openedSkils.GetSkillWithLevel(skillsConfigSkill.SkillId);
+                var skillWithLevel = _openedSkils.GetOrCreateSkillWithLevel(skillsConfigSkill.SkillId);
                 var skillDataByLevel = skillsConfigSkill.GetSkillByLevel(skillWithLevel.Level);
 
 
@@ -61,7 +61,7 @@ namespace Shop
 
         private void SkillUpgrade(string skillId, int cost)
         {
-            var skillWtihLevel = _openedSkils.GetSkillWithLevel(skillId);
+            var skillWtihLevel = _openedSkils.GetOrCreateSkillWithLevel(skillId);
             skillWtihLevel.Level++;
             _wallet.Coins -= cost;
             _saveSystem.SaveData(SavableObjectType.Wallet);

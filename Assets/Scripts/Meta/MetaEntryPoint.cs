@@ -6,6 +6,7 @@ using SceneManagment;
 using Shop;
 using Skill;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Meta
 {
@@ -17,6 +18,7 @@ namespace Meta
         private SaveSystem _saveSystem;
         private AudioManager _audioManager;
         private SceneLoader _sceneLoader;
+        [SerializeField]private LocationAndShop _locationAndShop;
         private const string SCENE_LOADER_TAG = "commonObject";
 
         public override void Run(SceneEnterParams enterParams)
@@ -29,6 +31,7 @@ namespace Meta
             
             _locationManager.Initialize(progress, StartLevel);
             _shopWindow.Initialize(_saveSystem, _skillsConfig);
+            _locationAndShop.Initialize();
             _audioManager.PlayClip(AudioNames.BackgroundMetaMusic);
         }
 

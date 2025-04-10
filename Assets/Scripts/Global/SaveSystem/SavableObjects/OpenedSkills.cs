@@ -12,7 +12,7 @@ namespace Global.SaveSystem.SavableObjects
             }
         };
 
-        public SkillWithLevel GetSkillWithLevel(string skillId)
+        public SkillWithLevel GetOrCreateSkillWithLevel(string skillId)
         {
             foreach (var skillWithLevel in Skills)
             {
@@ -21,7 +21,14 @@ namespace Global.SaveSystem.SavableObjects
                     return skillWithLevel;
                 }
             }
-            return null;
+
+            var newSkill = new SkillWithLevel()
+            {
+                Id = skillId,
+                Level = 0
+            };
+            Skills.Add(newSkill);
+            return newSkill;
         }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LocationandShop : MonoBehaviour
+public class LocationAndShop : MonoBehaviour
 {
     [SerializeField] private Button _buttonShop;
     [SerializeField] private Button _buttonLocation;
@@ -16,6 +16,7 @@ public class LocationandShop : MonoBehaviour
         });
         _buttonLocation.onClick.AddListener(() =>
         {
+            
             _location.SetActive(true);
             _shop.SetActive(false);
         });

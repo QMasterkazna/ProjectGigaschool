@@ -1,4 +1,5 @@
 
+using InternalAssets.Config.EnemyConfigs;
 using InternalAssets.Config.LevelConfigs;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,7 @@ public class EnemyManager : MonoBehaviour
     private Timer _timer;
     private LevelData _levelData;
     private int _currentEnemyIndex;
+    private EnemyType _currentEnemyDamageType;
 
     public event UnityAction<bool> OnLevelPassed; 
     
@@ -46,6 +48,8 @@ public class EnemyManager : MonoBehaviour
             return;
         }
         var currentEnemy = _levelData.Enemies[_currentEnemyIndex];
+        _currentEnemyDamageType = currentEnemy.EnemyType;
+
         _timer.SetActive(currentEnemy.IsBoss);
         if (currentEnemy.IsBoss)
         {
@@ -58,7 +62,6 @@ public class EnemyManager : MonoBehaviour
         _currentEnemyData = _enemiesConfig.GetEnemy(currentEnemy.Id);
         InitHPbar(currentEnemy.Hp);
         
-
         _currentEnemy.Initialize(_currentEnemyData.Sprite, currentEnemy.Hp);
         
         
@@ -76,6 +79,11 @@ public class EnemyManager : MonoBehaviour
         _currentEnemy.DoDamage(damage, .8f);
         // Debug.Log($"Damaged!- {damage}");
     }
-    
+
+    public EnemyType GetCurrentDamageEnemyType()
+    {
+        return _currentEnemyDamageType;
+    }
+
 
 }
