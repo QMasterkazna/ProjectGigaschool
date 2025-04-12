@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Extensions;
 using UnityEngine;
@@ -11,9 +12,10 @@ namespace InternalAssets.Config.LevelConfigs {
         
         private Dictionary<int, Dictionary<int, LevelData>> _levelsMap;
 
-        public int GetReward()
+        public int GetReward(int currentlocation, int currentlevel)
         {
-            return _levels.Sum(levelData => levelData.Reward);
+            // return _levels.Sum(levelData => levelData.Reward);
+            return _levelsMap[currentlocation][currentlevel].Reward;
         }
         public LevelData GetLevel(int location, int level)
         {

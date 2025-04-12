@@ -20,13 +20,17 @@ namespace Meta
         private SceneLoader _sceneLoader;
         [SerializeField]private LocationAndShop _locationAndShop;
         private const string SCENE_LOADER_TAG = "commonObject";
-
+        private Wallet _wallet;
+        [SerializeField] private VisibleCash _visibleCash;
         public override void Run(SceneEnterParams enterParams)
         {
             var commonObject = GameObject.FindWithTag(SCENE_LOADER_TAG).GetComponent<commonObject>();
             _saveSystem = commonObject.SaveSystem;
             _audioManager = commonObject.AudioManager;
             _sceneLoader = commonObject.SceneLoader;
+            _wallet = (Wallet)_saveSystem.GetData(SavableObjectType.Wallet);
+            _wallet.OnCoinChanged += _visibleCash.ChangeCointText;
+            _visibleCash.ChangeCointText(_wallet.Coins);
             var progress = (Progress)_saveSystem.GetData(SavableObjectType.Progress);
             
             _locationManager.Initialize(progress, StartLevel);

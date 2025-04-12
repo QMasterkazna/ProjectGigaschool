@@ -20,6 +20,8 @@ namespace SceneManagment
                 
             commonObject.SceneLoader.Initialize(commonObject.AudioManager);
             
+            
+            
             commonObject.SaveSystem = new();
             
             commonObject.SceneLoader.LoadMetaScene();

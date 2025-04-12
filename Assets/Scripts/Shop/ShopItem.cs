@@ -18,6 +18,7 @@ namespace Shop
         public void Initialize(UnityAction<string> onClick, string label, string description, string cost,
             bool isEnough, bool isMaxLevel)
         {
+            _button.onClick.RemoveAllListeners();
             _button.onClick.AddListener(() => onClick?.Invoke(SkillId));
             _label.text = label;
             _description.text = description;

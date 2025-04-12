@@ -3,6 +3,7 @@ using Global.SaveSystem;
 using Global.SaveSystem.SavableObjects;
 using JetBrains.Annotations;
 using Skill;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ namespace Shop
         [SerializeField] private List<GameObject> _blocks;
 
         [SerializeField] private List<ShopItem> _items;
+        [SerializeField] private TextMeshProUGUI _cashCount;
         private Dictionary<string, ShopItem> _itemsMap;
         private int _currentBlock = 0;
         private SkillsConfig _skillsConfig;
@@ -63,7 +65,8 @@ namespace Shop
         {
             var skillWtihLevel = _openedSkils.GetOrCreateSkillWithLevel(skillId);
             skillWtihLevel.Level++;
-            _wallet.Coins -= cost;
+            // _wallet.Coins -= cost;
+            _wallet.SetCoins(cost, 2);
             _saveSystem.SaveData(SavableObjectType.Wallet);
             _saveSystem.SaveData(SavableObjectType.OpenedSkills);
             ShowShopItems();

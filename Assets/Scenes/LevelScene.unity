@@ -1056,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 3117041882507447878, guid: e3fb53fb68fe9334db2c860697879fec, type: 3}
+      propertyPath: _enemyTypeText
+      value: 
+      objectReference: {fileID: 4777365415419500098}
     - target: {fileID: 3472721590847244715, guid: e3fb53fb68fe9334db2c860697879fec, type: 3}
       propertyPath: m_SizeDelta.x
       value: 300
@@ -1249,6 +1253,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fb53fb68fe9334db2c860697879fec, type: 3}
+--- !u!114 &4777365415419500098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8937134925153069875, guid: e3fb53fb68fe9334db2c860697879fec, type: 3}
+  m_PrefabInstance: {fileID: 4777365415419500097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

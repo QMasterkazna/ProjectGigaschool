@@ -27,8 +27,9 @@ public class GameEntryPoint : EntryPoint
     [SerializeField] SkillsConfig _skillsConfig;
     private SkillSystem _skillSystem;
     private EndLevelSystem _endLevelSystem;
-    private LocationAndShop _locationAndShop;
-
+    
+    
+    
     // ReSharper disable Unity.PerformanceAnalysis
     public override void Run(SceneEnterParams enterParams)
     {
@@ -47,7 +48,7 @@ public class GameEntryPoint : EntryPoint
 
         _enemyManager.Initialize(_healthBar, _timer);
         _endLevelWindow.Initialize();
-        _locationAndShop.Initialize();
+
         var openedSkills = (OpenedSkills)_saveSystem.GetData(SavableObjectType.OpenedSkills);
         _skillSystem = new SkillSystem(openedSkills, _skillsConfig, _enemyManager);
         _clickButtonManager.Initialize(_skillSystem);
@@ -115,7 +116,6 @@ public class GameEntryPoint : EntryPoint
     private void TravelToMap()
     {
         _sceneLoader.LoadMetaScene();
-        Debug.LogError("ПЕРЕХОД НА КАРТУ");
     }
 
     private void StartLevel()

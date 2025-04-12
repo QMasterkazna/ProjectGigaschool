@@ -20,10 +20,12 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 0
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 30
+      EnemyType: 2
     Reward: 30
   - Location: 1
     LevelNumber: 2
@@ -32,10 +34,12 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 1
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 30
+      EnemyType: 2
     Reward: 25
   - Location: 1
     LevelNumber: 3
@@ -44,14 +48,17 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 0
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 2
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 1
     Reward: 40
   - Location: 1
     LevelNumber: 4
@@ -60,14 +67,17 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 1
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 0
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 2
     Reward: 30
   - Location: 1
     LevelNumber: 5
@@ -76,14 +86,17 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 2
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 1
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 0
     Reward: 50
   - Location: 2
     LevelNumber: 1
@@ -92,14 +105,17 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 0
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 2
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 1
     Reward: 35
   - Location: 2
     LevelNumber: 2
@@ -108,14 +124,17 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 2
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 1
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 0
     Reward: 25
   - Location: 2
     LevelNumber: 3
@@ -124,14 +143,17 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 0
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 2
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 1
     Reward: 45
   - Location: 2
     LevelNumber: 4
@@ -140,14 +162,17 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 2
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 1
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 0
     Reward: 45
   - Location: 2
     LevelNumber: 5
@@ -156,12 +181,15 @@ MonoBehaviour:
       Hp: 100
       IsBoss: 0
       BossTime: 0
+      EnemyType: 0
     - Id: enemy
       Hp: 150
       IsBoss: 0
       BossTime: 0
+      EnemyType: 2
     - Id: enemy
       Hp: 200
       IsBoss: 1
       BossTime: 15
+      EnemyType: 1
     Reward: 60

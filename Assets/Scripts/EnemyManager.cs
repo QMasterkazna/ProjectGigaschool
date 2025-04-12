@@ -1,6 +1,7 @@
 
 using InternalAssets.Config.EnemyConfigs;
 using InternalAssets.Config.LevelConfigs;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,13 +9,14 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private Transform _enemyContainer;
     [SerializeField] private EnemiesConfig _enemiesConfig;
+    [SerializeField] private TextMeshProUGUI _enemyTypeText;
     private Enemy _currentEnemy;
     private HealthBar _healthBar;
     private Timer _timer;
     private LevelData _levelData;
     private int _currentEnemyIndex;
     private EnemyType _currentEnemyDamageType;
-
+    
     public event UnityAction<bool> OnLevelPassed; 
     
     public void Initialize(HealthBar healthBar, Timer timer)
@@ -60,7 +62,9 @@ public class EnemyManager : MonoBehaviour
 
         var _currentEnemyData = _enemiesConfig.GetEnemy(currentEnemy.Id);
         _currentEnemyData = _enemiesConfig.GetEnemy(currentEnemy.Id);
+        
         InitHPbar(currentEnemy.Hp);
+        _enemyTypeText.text = currentEnemy.EnemyType.ToString();
         
         _currentEnemy.Initialize(_currentEnemyData.Sprite, currentEnemy.Hp);
         
