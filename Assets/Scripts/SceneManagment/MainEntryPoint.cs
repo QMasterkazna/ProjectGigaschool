@@ -1,6 +1,7 @@
 using Global.Audio;
 using Global.SaveSystem;
 using UnityEngine;
+using YG;
 
 namespace SceneManagment
 {
@@ -19,8 +20,8 @@ namespace SceneManagment
             commonObject.AudioManager.LoadOnce();            
                 
             commonObject.SceneLoader.Initialize(commonObject.AudioManager);
-            
-            
+
+            commonObject.TranslatorManager = new(YG2.lang);
             
             commonObject.SaveSystem = new();
             

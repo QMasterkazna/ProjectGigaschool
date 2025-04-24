@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Global.SaveSystem.SavableObjects;
 using UnityEngine;
-
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 namespace Global.SaveSystem
 {
     public class SaveSystem {

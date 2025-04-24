@@ -4,8 +4,10 @@ using Global.SaveSystem.SavableObjects;
 using JetBrains.Annotations;
 using Skill;
 using TMPro;
+using Translator;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 namespace Shop
 {
@@ -24,11 +26,13 @@ namespace Shop
         private OpenedSkills _openedSkils;
         private Wallet _wallet;
         private SaveSystem _saveSystem;
+        private TranslatorManager _translatorManager;
 
-        public void Initialize(SaveSystem saveSystem, SkillsConfig skillsConfig)
+        public void Initialize(SaveSystem saveSystem, SkillsConfig skillsConfig, TranslatorManager translatorManager)
         {
             _saveSystem = saveSystem;
             _skillsConfig = skillsConfig;
+            _translatorManager = translatorManager;
             _openedSkils = (OpenedSkills)_saveSystem.GetData(SavableObjectType.OpenedSkills);
             _wallet = (Wallet)_saveSystem.GetData(SavableObjectType.Wallet);
             InitializeItemMap();
@@ -47,7 +51,7 @@ namespace Shop
                 if (!_itemsMap.ContainsKey(skillsConfigSkill.SkillId)) continue;
 
                 _itemsMap[skillsConfigSkill.SkillId].Initialize(skillId => SkillUpgrade(skillId, skillDataByLevel.Cost),
-                    skillsConfigSkill.SkillId,
+                    _translatorManager.Translate(skillsConfigSkill.SkillId + "Label"),
                     "", skillDataByLevel.Cost.ToString(), _wallet.Coins >= skillDataByLevel.Cost, skillsConfigSkill.isMaxLevel(skillWithLevel.Level));
             }
         }

@@ -7,11 +7,10 @@ public class ClickButton : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private Image _image;
 
-    public void Initilize(Sprite sprite, ColorBlock colorBlock)
+    public void Initilize(ColorBlock colorBlock)
     {
         //Иницилизация палитры кнопки
         // Визуальное изменение кнопки при клике
-        _image.sprite = sprite;
         _button.colors = colorBlock;
     }
 

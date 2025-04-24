@@ -26,9 +26,9 @@ public class ClickButtonManager : MonoBehaviour
     public event UnityAction OnClickedJumpAttack;
     public void Initialize(SkillSystem skillSystem)
     {
-        _clickEnemyButton.Initilize(_buttonEnemyConfig.DefaultSprite, _buttonEnemyConfig.ButtonColors);
-        _clickSpecialEnemyButton.Initilize(_buttonSpecialEnemyConfig.DefaultSprite, _buttonSpecialEnemyConfig.ButtonColors);
-        _clickEliteEnemyButton.Initilize(_buttonEliteEnemyConfig.DefaultSprite, _buttonEliteEnemyConfig.ButtonColors);
+        _clickEnemyButton.Initilize(_buttonEnemyConfig.ButtonColors);
+        _clickSpecialEnemyButton.Initilize(_buttonSpecialEnemyConfig.ButtonColors);
+        _clickEliteEnemyButton.Initilize(_buttonEliteEnemyConfig.ButtonColors);
         // _clickLightButton.Initilize(_buttonConfig.DefaultSprite, _buttonConfig.ButtonColors);
         // _clickLightButton.SubscribeOnClickLightAttack(ShowClickLightAttack);
         _clickEnemyButton.SubscribeOnClick(() =>skillSystem.InvokeTrigger(SkillTrigger.OnEnemy));

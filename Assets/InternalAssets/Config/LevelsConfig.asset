@@ -193,3 +193,353 @@ MonoBehaviour:
       BossTime: 15
       EnemyType: 1
     Reward: 60
+  - Location: 3
+    LevelNumber: 1
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 100
+  - Location: 3
+    LevelNumber: 2
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 120
+  - Location: 3
+    LevelNumber: 3
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 100
+  - Location: 3
+    LevelNumber: 4
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 100
+  - Location: 3
+    LevelNumber: 5
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 350
+      IsBoss: 1
+      BossTime: 20
+      EnemyType: 1
+    Reward: 100
+  - Location: 4
+    LevelNumber: 1
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 100
+  - Location: 4
+    LevelNumber: 2
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 150
+  - Location: 4
+    LevelNumber: 3
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125
+  - Location: 4
+    LevelNumber: 4
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125
+  - Location: 4
+    LevelNumber: 5
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125
+  - Location: 5
+    LevelNumber: 1
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125
+  - Location: 5
+    LevelNumber: 2
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125
+  - Location: 5
+    LevelNumber: 3
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125
+  - Location: 5
+    LevelNumber: 4
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125
+  - Location: 5
+    LevelNumber: 5
+    Enemies:
+    - Id: enemy
+      Hp: 100
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 0
+    - Id: enemy
+      Hp: 150
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 2
+    - Id: enemy
+      Hp: 200
+      IsBoss: 0
+      BossTime: 0
+      EnemyType: 1
+    - Id: enemy
+      Hp: 250
+      IsBoss: 1
+      BossTime: 15
+      EnemyType: 1
+    Reward: 125

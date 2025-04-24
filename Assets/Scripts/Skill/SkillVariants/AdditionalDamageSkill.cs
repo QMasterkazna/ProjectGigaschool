@@ -66,7 +66,7 @@ namespace Skill.SkillVariants
         }
     }
     [Preserve]
-    public class ElieEnemyDamageSkill : Skill
+    public class EliteEnemyDamageSkill : Skill
     {
         private EnemyManager _enemyManager;
         private SkillDataByLevel _skilldData;

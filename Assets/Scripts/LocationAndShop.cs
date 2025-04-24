@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class LocationAndShop : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LocationAndShop : MonoBehaviour
     {
         _buttonShop.onClick.AddListener(()=>
         {
+            YG2.InterstitialAdvShow();
             _shop.SetActive(true);
             _location.SetActive(false);
         });

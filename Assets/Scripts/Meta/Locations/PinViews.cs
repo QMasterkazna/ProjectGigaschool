@@ -25,7 +25,7 @@ namespace Meta.Locations
         public void Initialize(int levelNumber, ProgressState progressState, UnityAction clickCallback)
         {
             SetupCurrentLevelSequence();
-            _text.text = $"Ур {levelNumber}";
+            _text.text = $"{levelNumber}";
 
             _image.color = progressState switch
             {
@@ -33,6 +33,12 @@ namespace Meta.Locations
                 ProgressState.Closed => _closedlevel,
                 ProgressState.Passed => _passedLevel,
                 
+            };
+            _button.enabled = progressState switch
+            {
+                ProgressState.Current => true,
+                ProgressState.Passed => true,
+                ProgressState.Closed => false,
             };
             
             if (progressState == ProgressState.Current)
